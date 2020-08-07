@@ -12,8 +12,9 @@ int main(int argc, char **argv)
     ifile.seekg(0, std::ios::end);
     int length = ifile.tellg();
     ifile.seekg(0, std::ios::beg);
-
     std::shared_ptr<uint8_t> buffer = std::make_shared<uint8_t>(length);
+    ifile.read(buffer.get(), length);
+
     uint8_t *d_nv12ptr = 0;
     cudaMalloc(&d_nv12ptr, length);
     cudaMemcpy(d_nv12ptr, buffer.get(), length, cudaMemcpyHostToDevice);
