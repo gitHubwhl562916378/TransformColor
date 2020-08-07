@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.9 FATAL_ERROR)
 
 project(TransformColor
         LANGUAGES CXX CUDA
@@ -21,5 +21,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)
 
 file(GLOB SRCS "*.cpp" "*.cu" "*.cuh")
 add_executable(${PROJECT_NAME} ${SRCS})
-target_link_libraries(${PROJECT_NAME} ${CUDA_LIBRARIES} ${CUDA_CUDA_LIBRARY} nvcuvid cudnn)
+target_link_libraries(${PROJECT_NAME} ${CUDA_LIBRARIES} ${CUDA_CUDA_LIBRARY})
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
